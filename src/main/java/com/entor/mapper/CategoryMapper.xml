@@ -1,0 +1,26 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Category">
+	<insert id="add" parameterType="Category">
+		insert into category(name) values (#name)
+		<selectKey>
+			select last_insert_id() as id
+		</selectKey>
+	</insert>
+	<delete id="deleteById">
+		delete from category where id = #{id}
+	</delete>
+	<update id="update" parameterType="Category">
+		update category set name = #{name} where id = #{id}
+	</update>
+	<select id="queryById" resultType="Category">
+		SELECT * from category WHERE id= #{id}
+	</select>
+	<select id="queryByPage" parameterType="map" resultType="Category">
+		SELECT * from category where id LIMIT #{start},#{pageSize}
+	</select>
+	<select id="getTotals" resultType="int">
+		SELECT COUNT(*) FROM category
+	</select>
+</mapper>
