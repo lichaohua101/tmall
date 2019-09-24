@@ -1,5 +1,8 @@
 package com.entor.controller;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -30,16 +33,36 @@ public class CategoryController {
 		List<Category> list= categoryService.queryByPage(Category.class,page.getSp(),page.getPageSize());
 		map.put("cs", list);
 		map.put("page", page);
+		map.put("list", "admin_listCategory");
 		return "admin/listCategory";
+	}
+	//删除
+	@RequestMapping("/admin_category_delete/{id}/{sp}")
+	public String admin_category_delete(@PathVariable String id,@PathVariable String sp) {
+		categoryService.deleteById(Category.class, id);
+		return "forward:/admin_listCategory/"+sp;
 	}
 	//添加类别
 	@RequestMapping("/admin_category_add")
-	public String admin_category_add(String name,MultipartFile file ,HttpServletRequest request) {
+	public String admin_category_add(String name,MultipartFile file ,HttpServletRequest request) throws IllegalStateException, IOException {
 		Category category = new Category();
 		category.setName(name);
 		categoryService.add(category);
+		System.out.println("类别名字"+name);
 		String path = request.getServletContext().getRealPath("/img/category/");
-		
-		return null;
+		if (file!=null) {
+			//文件类型
+			String contentType =  file.getContentType();
+			//文件名称
+			String fileName = String.valueOf(category.getId());
+			//文件大小
+			long size =  file.getSize();
+			System.out.println("文件类型"+contentType);
+			System.out.println("文件名称"+fileName);
+			System.out.println("文件大小"+size);
+			System.out.println("文件地址"+path);
+			file.transferTo(new File(path,fileName+".jpg"));
+		}
+		return "redirect:/admin_listCategory/1";
 	}
 }

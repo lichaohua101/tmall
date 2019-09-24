@@ -4,10 +4,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 
-import com.entor.service.OrederItemService;
+import com.entor.dao.ReviewDao;
 
 @Controller
-public class OrderItemController {
+public class ReviewController {
 	@Resource
-	private OrederItemService orederItemService;
+	private ReviewDao reviewDao;
 }

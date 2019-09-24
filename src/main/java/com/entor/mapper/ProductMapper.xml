@@ -4,6 +4,14 @@
 
 <mapper namespace="Product"> 
 <select id="queryByPage" parameterType="map" resultType="Product">
-	SELECT * from product where id LIMIT #{start},#{pageSize}
+	SELECT * FROM product WHERE  id LIMIT #{start},#{pageSize}
 </select>
+
+<select id="queryByCidPage" parameterType="map" resultType="Product">
+	SELECT * FROM product WHERE cid = #{cid} and  id LIMIT #{start},#{pageSize}
+</select>
+<select id="getTotals" resultType="int">
+	SELECT COUNT(*) FROM product
+</select>
+
 </mapper>

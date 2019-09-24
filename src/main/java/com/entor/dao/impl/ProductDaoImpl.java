@@ -2,7 +2,11 @@ package com.entor.dao.impl;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.entor.dao.ProductDao;
@@ -11,7 +15,13 @@ import com.entor.entity.Product;
 @Repository("productDao")
 public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
 
-	private final String namespace = "Product";
+	private final String namespace = "product";
+	
+	@Resource
+	@Override
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
 	
 	@Override
 	public void add(Product t) {
@@ -71,6 +81,11 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
 	public List<Product> queryAllByCid(int cid) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Product> queryByCidPage(Map<String, Integer> map){
+		return getSqlSession().selectList(Product.class.getSimpleName()+".queryByCidPage",map);
 	}
 
 }

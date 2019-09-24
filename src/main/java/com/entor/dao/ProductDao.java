@@ -1,11 +1,17 @@
 package com.entor.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.entor.entity.Product;
 
 public interface ProductDao extends BaseDao<Product>{
-
+	
+	/**
+	 * 同一商品类别 进行分页
+	 * @return
+	 */
+	public List<Product> queryByCidPage(Map<String, Integer> map);
 	/**
 	 * 批量删除记录
 	 * @param ids	由主机编号拼接成的字符串，用逗号隔开，格式是：1,2,3,4,5

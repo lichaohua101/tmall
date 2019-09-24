@@ -61,9 +61,9 @@
 					<td>${p.id}</td>
 					<td>
 
-						<c:if test="${!empty p.firstProductImage}">
+						<%-- <c:if test="${!empty p.firstProductImage}">
 							<img width="40px" src="img/productSingle/${p.firstProductImage.id}.jpg">
-						</c:if>
+						</c:if> --%>图片
 
 					</td>
 					<td>${p.name}</td>
@@ -88,9 +88,9 @@
 		</table>
 	</div>
 
-	<div class="pageDiv">
+	<%-- <div class="pageDiv">
 		<%@include file="../include/admin/adminPage.jsp"%>
-	</div>
+	</div> --%>
 
 	<div class="panel panel-warning addDiv">
 		<div class="panel-heading">新增产品</div>

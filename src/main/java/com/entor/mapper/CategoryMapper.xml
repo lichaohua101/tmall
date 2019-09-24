@@ -3,8 +3,8 @@
 
 <mapper namespace="Category">
 	<insert id="add" parameterType="Category">
-		insert into category(name) values (#name)
-		<selectKey>
+		insert into category(name) values (#{name})
+		 <selectKey resultType="int" keyProperty="id" order="AFTER">
 			select last_insert_id() as id
 		</selectKey>
 	</insert>
