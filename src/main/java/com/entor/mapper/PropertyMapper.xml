@@ -2,6 +2,18 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Property">
+<insert id="add" parameterType="Property">
+	
+	<selectKey resultType="int" keyProperty="id" order="AFTER">
+		select last_insert_id() as id
+	</selectKey>
+</insert>
+<delete id="deleteById">
+	delete from Property where id = #{id}
+</delete>
+<update id="update" parameterType="Property">
+	
+</update>
 <select id="queryByPage" parameterType="map" resultType="Property">
 	SELECT * from Property where id LIMIT #{start},#{pageSize}
 </select>

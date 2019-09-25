@@ -37,5 +37,11 @@ public class ProductController {
 		map.put("c", category);
 		return "admin/listProduct";
 	}
+	//删除
+	@RequestMapping("/admin_product_delete/{id}/{sp}/{cid}")
+	public String admin_product_delete(@PathVariable String id,@PathVariable String sp,@PathVariable String cid) {
+		productService.deleteById(Product.class, id);
+		return "forward:/admin_listProduct/"+cid+"/"+sp;
+	}
 	
 }
