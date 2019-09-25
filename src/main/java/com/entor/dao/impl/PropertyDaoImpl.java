@@ -1,7 +1,11 @@
 package com.entor.dao.impl;
 
 import java.util.List;
+import java.util.Map;
 
+import javax.annotation.Resource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.entor.dao.PropertyDao;
@@ -12,6 +16,12 @@ import com.entor.entity.Property;
 public class PropertyDaoImpl extends BaseDaoImpl<Property> implements PropertyDao{
 
 	private final String namespace = "Property";
+	
+	@Resource
+	@Override
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
 	
 	@Override
 	public void deleteMore(String ids) {
@@ -47,6 +57,16 @@ public class PropertyDaoImpl extends BaseDaoImpl<Property> implements PropertyDa
 	public int getTotalsByCid(int cid) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public List<Property> queryByCidPage(Map<String, Integer> map) {
+		return getSqlSession().selectList(Property.class.getSimpleName()+".queryByCidPage", map);
+	}
+
+	@Override
+	public int getByCidTotals(int cid) {
+		return getSqlSession().selectOne(Property.class.getSimpleName()+".getByCidTotals", cid);
 	}
 
 }

@@ -11,12 +11,14 @@ import org.springframework.stereotype.Repository;
 
 import com.entor.dao.ProductDao;
 import com.entor.entity.Product;
+import com.entor.entity.Property;
 
 @Repository("productDao")
 public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
 
 	private final String namespace = "product";
 	
+
 	@Resource
 	@Override
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
@@ -67,8 +69,7 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
 
 	@Override
 	public int getTotalsByCid(int cid) {
-		// TODO Auto-generated method stub
-		return 0;
+		return getSqlSession().selectOne(Product.class.getSimpleName()+".getTotalsByCid", cid);
 	}
 
 	@Override
@@ -86,6 +87,11 @@ public class ProductDaoImpl extends BaseDaoImpl<Product> implements ProductDao {
 	@Override
 	public List<Product> queryByCidPage(Map<String, Integer> map){
 		return getSqlSession().selectList(Product.class.getSimpleName()+".queryByCidPage",map);
+	}
+
+	@Override
+	public int getByCidTotals(int cid) {
+		return getSqlSession().selectOne(Product.class.getSimpleName()+".getByCidTotals",cid);
 	}
 
 }

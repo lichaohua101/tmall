@@ -8,6 +8,12 @@ import com.entor.entity.Product;
 public interface ProductDao extends BaseDao<Product>{
 	
 	/**
+	 * 同一类别的商品分页
+	 * @param cid
+	 * @return
+	 */
+	public int getByCidTotals(int cid);
+	/**
 	 * 同一商品类别 进行分页
 	 * @return
 	 */

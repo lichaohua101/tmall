@@ -3,7 +3,7 @@
 
 <mapper namespace="Property">
 <insert id="add" parameterType="Property">
-	
+	insert INTO property (cid,name) VALUES (#{cid},#{name}) 
 	<selectKey resultType="int" keyProperty="id" order="AFTER">
 		select last_insert_id() as id
 	</selectKey>
@@ -12,9 +12,25 @@
 	delete from Property where id = #{id}
 </delete>
 <update id="update" parameterType="Property">
-	
+	update property 
+	<trim prefix="set" suffixOverrides=",">
+		<if test="cid!=null and cid!=''">
+			cid = #{cid}
+		</if>
+		<if test="name!=null and name!=''">
+			name = #{name}
+		</if>
+	</trim>
+	where id = #{id}
 </update>
 <select id="queryByPage" parameterType="map" resultType="Property">
 	SELECT * from Property where id LIMIT #{start},#{pageSize}
 </select>
+<select id="queryByCidPage" parameterType="map" resultType="Property">
+	SELECT * from Property where cid = #{cid} AND id LIMIT #{start},#{pageSize}
+</select>
+<select id="getByCidTotals" resultType="int">
+	select count(*) from property where cid = #{cid}
+</select>
+
 </mapper>

@@ -5,4 +5,5 @@
 <select id="queryByPage" parameterType="map" resultType="propertyvalue">
 	SELECT * from propertyvalue where id LIMIT #{start},#{pageSize}
 </select>
+
 </mapper>

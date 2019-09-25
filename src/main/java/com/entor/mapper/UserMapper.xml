@@ -23,12 +23,12 @@
 	where id = #{id}
 </update>
 <select id="queryById" resultType="User">
-	SELECT * FROM `user` WHERE id = #{id} 
+	SELECT * FROM  user  WHERE id = #{id} 
 </select>
 <select id="queryByPage" parameterType="map" resultType="User">
-	SELECT * from User_ where id LIMIT #{start},#{pageSize}
+	SELECT * from User  where id LIMIT #{start},#{pageSize}
 </select>
 <select id="getTotals" resultType="int">
-	SELECT COUNT(*) FROM User_
+	SELECT COUNT(*) FROM User
 </select>
 </mapper>

@@ -34,8 +34,9 @@
 		<!-- 类别名，该包下面的所有类以类名作为别名 -->
 		<property name="typeAliasesPackage" value="com.entor.entity" />
 		<!-- orm映射文件，指定包以及子包下的所有xml文件 -->
-		<property name="mapperLocations"
-			value="classpath:com/entor/mapper/**/*.xml" />
+		<property name="mapperLocations" value="classpath:com/entor/mapper/**/*.xml" />
+		<!-- 加强版日志 -->
+		
 	</bean>
 	<!-- 配置事务管理器 -->
 	<bean id="transactionManager"
@@ -63,6 +64,5 @@
 			id="pointcut" />
 		<aop:advisor advice-ref="advice" pointcut-ref="pointcut" />
 	</aop:config>
-
 
 </beans>

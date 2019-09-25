@@ -24,17 +24,18 @@ public class ProductController {
 	@Resource
 	private CategoryService categoryService ;
 	
-	//统一类别的商品分页
+	//统一类别的商品分页admin_product_list/91/1
 	@RequestMapping("/admin_product_list/{cid}/{currentPage}")
 	public String queryByPage(@PathVariable String cid, @PathVariable String currentPage, Map<String, Object> map) {
-		Page<Product> page = new Page<>(currentPage, 5, productService.getTotals(Product.class));
-		//List<Product> list = productService.queryByPage(Product.class, page.getSp(),page.getPageSize());
+		int pageSize = productService.getByCidTotals(Integer.parseInt(cid));
+		Page<Product> page = new Page<>(currentPage, 5,pageSize );
 		List<Product> list = productService.queryByCidPage(Integer.parseInt(cid), page.getSp(),page.getPageSize());
 		Category category =  categoryService.queryById(Category.class, Integer.parseInt(cid));
 		map.put("ps", list);
 		map.put("page", page);
-		map.put("list", "admin_property_list");
+		map.put("list", "admin_product_list");
 		map.put("c", category);
+		map.put("Cateid", cid);
 		return "admin/listProduct";
 	}
 	//删除

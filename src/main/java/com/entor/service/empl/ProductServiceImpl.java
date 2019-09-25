@@ -26,4 +26,9 @@ public class ProductServiceImpl extends BaseServiceImpl<Product> implements Prod
 		map.put("cid", cid);
 		return productDao.queryByCidPage(map);
 	}
+
+	@Override
+	public int getByCidTotals(int cid) {
+		return productDao.getTotalsByCid(cid);
+	}
 }

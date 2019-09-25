@@ -13,5 +13,8 @@
 <select id="getTotals" resultType="int">
 	SELECT COUNT(*) FROM product
 </select>
+<select id="getTotalsByCid" resultType="int">
+	SELECT COUNT(*) FROM product where cid = #{cid}
+</select>
 
 </mapper>

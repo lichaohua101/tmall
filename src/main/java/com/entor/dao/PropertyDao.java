@@ -1,11 +1,25 @@
 package com.entor.dao;
 
 import java.util.List;
+import java.util.Map;
 
+import com.entor.entity.Product;
 import com.entor.entity.Property;
 
 public interface PropertyDao extends BaseDao<Property>{
-
+	
+	/**
+	 * 获取同一类别 下的属性
+	 * @param cid
+	 * @return
+	 */
+	public int getByCidTotals(int cid);
+	/**
+	 * 对统一类别下的属性进行分页
+	 * @param map
+	 * @return
+	 */
+	public List<Property> queryByCidPage(Map<String, Integer> map);
 	/**
 	 * 批量删除记录
 	 * @param ids	由主机编号拼接成的字符串，用逗号隔开，格式是：1,2,3,4,5

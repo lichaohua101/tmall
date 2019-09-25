@@ -18,13 +18,16 @@ public class UserController {
 	@Resource 
 	private UserService userService;
 	
-	@RequestMapping("/admin_listUser/{currentPage}")
-	public String queryByPage(@PathVariable String currentPage,Map<String, Object> map) {
+	//admin_user_list/0/1  
+	@RequestMapping("/admin_user_list/{cid}/{currentPage}")
+	public String queryByPage(@PathVariable String cid, @PathVariable String currentPage,Map<String, Object> map) {
+		int ccid = Integer.parseInt(cid);
 		Page<User> page = new Page<>(currentPage,5,userService.getTotals(User.class));
 		List<User> list= userService.queryByPage(User.class,page.getSp(),page.getPageSize());
 		map.put("us", list);
 		map.put("page", page);
-		map.put("list", "admin_listUser");
+		map.put("list", "admin_user_list");
+		map.put("Cateid", ccid);
 		return "admin/listUser";
 	}
 }

@@ -20,7 +20,7 @@ $(function(){
 //根据页码跳转
 function change() {
 	var num = $("#num").val();
-	location.href = "../${list}/"+num;
+	location.href = "${pageContext.request.contextPath}/./${list}/${Cateid}/"+num;
 }
 </script>
 
@@ -40,20 +40,20 @@ function change() {
 	
 	
 	<li>	
-		<a href="${pageContext.request.contextPath}/${list }/1">首页</a>&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/${list }/${Cateid}/1">首页</a>&nbsp;&nbsp;
 	</li>
 	<li>
-		<a href="${pageContext.request.contextPath}/${list }/${page.sp-1 }">上一页</a>&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/${list }/${Cateid}/${page.sp-1 }">上一页</a>&nbsp;&nbsp;
 	</li>
-	<form action="${pageContext.request.contextPath}/${list }/1" method="post" style="display: inline;">
+	<form action="${pageContext.request.contextPath}/${list }/${Cateid}/1" method="post" style="display: inline;">
 		<input type="text" name="currentPage" value="${page.sp }" id="num" size="4">
 		<input type="button" value="跳转" onclick="change();">
 	</form>&nbsp;&nbsp;
 	<li>
-		<a href="${pageContext.request.contextPath}/${list }/${page.sp+1 }">下一页</a>&nbsp;&nbsp;
+		<a href="${pageContext.request.contextPath}/${list }/${Cateid}/${page.sp+1 }">下一页</a>&nbsp;&nbsp;
 	</li>
 	<li>
-		<a href="${pageContext.request.contextPath}/${list }/${page.pageCount }">末页</a>	
+		<a href="${pageContext.request.contextPath}/${list }/${Cateid}/${page.pageCount }">末页</a>	
 	</li>   
   </ul>
 </nav>
