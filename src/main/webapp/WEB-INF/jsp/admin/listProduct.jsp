@@ -60,7 +60,7 @@
 				<tr>
 					<td>${p.id}</td>
 					<td>
-
+					<td><img height="40px" src="${pageContext.request.contextPath}/img/productSingle/${c.id}.jpg"></td>
 						<%-- <c:if test="${!empty p.firstProductImage}">
 							<img width="40px" src="img/productSingle/${p.firstProductImage.id}.jpg">
 						</c:if> --%>图片
