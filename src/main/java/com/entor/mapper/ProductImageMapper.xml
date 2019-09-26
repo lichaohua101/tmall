@@ -5,4 +5,8 @@
 <select id="queryByPage" parameterType="map" resultType="ProductImage">
 	SELECT * from ProductImage where id LIMIT #{start},#{pageSize}
 </select>
+
+<select id="getScondImage" parameterType="map" resultType="int">
+select MAX(pimage) pi FROM (select pi.id pimage from product p ,productimage pi where p.id=pi.pid and p.cid=#{cid} and p.id=#{pid} and pi.type='type_single' and pi.id LIMIT 0,5)pimage
+</select>
 </mapper>

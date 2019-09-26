@@ -17,8 +17,8 @@ public class Product {
 	private String subTitle;
 	/**
 	 * 原价格
-	 */
-	private float originalPrice;
+	 */			 
+	private float  orignalPrice;
 	/**
 	 * 优惠价格
 	 */
@@ -35,11 +35,20 @@ public class Product {
 	 * 产品上架时间
 	 */
 	private Date createDate;
-	@Override
-	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", subTitle=" + subTitle + ", originalPrice=" + originalPrice
-				+ ", promotePrice=" + promotePrice + ", stock=" + stock + ", cid=" + cid + ", createDate=" + createDate
-				+ "]";
+	public Product() {
+		super();
+	}
+	public Product(int id, String name, String subTitle, float orignalPrice, float promotePrice, int stock, int cid,
+			Date createDate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.subTitle = subTitle;
+		this.orignalPrice = orignalPrice;
+		this.promotePrice = promotePrice;
+		this.stock = stock;
+		this.cid = cid;
+		this.createDate = createDate;
 	}
 	public int getId() {
 		return id;
@@ -59,11 +68,11 @@ public class Product {
 	public void setSubTitle(String subTitle) {
 		this.subTitle = subTitle;
 	}
-	public float getOriginalPrice() {
-		return originalPrice;
+	public float getOrignalPrice() {
+		return orignalPrice;
 	}
-	public void setOriginalPrice(float originalPrice) {
-		this.originalPrice = originalPrice;
+	public void setOrignalPrice(float orignalPrice) {
+		this.orignalPrice = orignalPrice;
 	}
 	public float getPromotePrice() {
 		return promotePrice;
@@ -89,6 +98,11 @@ public class Product {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", subTitle=" + subTitle + ", orignalPrice=" + orignalPrice
+				+ ", promotePrice=" + promotePrice + ", stock=" + stock + ", cid=" + cid + ", createDate=" + createDate
+				+ "]";
+	}
 	
 }

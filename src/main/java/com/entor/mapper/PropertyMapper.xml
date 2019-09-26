@@ -12,13 +12,13 @@
 	delete from Property where id = #{id}
 </delete>
 <update id="update" parameterType="Property">
-	update property 
+	update Property
 	<trim prefix="set" suffixOverrides=",">
-		<if test="cid!=null and cid!=''">
-			cid = #{cid}
-		</if>
 		<if test="name!=null and name!=''">
-			name = #{name}
+			name = #{name},
+		</if>
+		<if test="cid!=null and cid!=''">
+			cid = #{cid},
 		</if>
 	</trim>
 	where id = #{id}
@@ -32,5 +32,7 @@
 <select id="getByCidTotals" resultType="int">
 	select count(*) from property where cid = #{cid}
 </select>
-
+<select id="queryById" resultType="Property">
+	SELECT * from property WHERE id= #{id}
+</select>
 </mapper>

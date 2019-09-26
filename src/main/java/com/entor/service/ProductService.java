@@ -10,4 +10,5 @@ public interface ProductService extends BaseService<Product>{
 	public List<Product> queryByCidPage(int cid,int currentPage, int pageSize);
 	public int getByCidTotals(int cid);
 	
+	
 }

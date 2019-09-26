@@ -8,6 +8,7 @@ import com.entor.entity.Property;
 
 public interface PropertyDao extends BaseDao<Property>{
 	
+	//public 
 	/**
 	 * 获取同一类别 下的属性
 	 * @param cid

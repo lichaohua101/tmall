@@ -5,7 +5,14 @@ import java.util.List;
 import com.entor.entity.ProductImage;
 
 public interface ProductImageDao extends BaseDao<ProductImage>{
-
+	
+	/**
+	 * 获取 产品管理的图片
+	 * @param cid		类别Id
+	 * @param piId		产品Id
+	 * @return
+	 */
+	public int getScondImage(int cid,int pid);
 	/**
 	 * 批量删除记录
 	 * @param ids	由主机编号拼接成的字符串，用逗号隔开，格式是：1,2,3,4,5

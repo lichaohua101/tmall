@@ -3,6 +3,9 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Product"> 
+<select id="queryById" resultType="Product">
+	select * from product where id = #{id}
+</select>
 <select id="queryByPage" parameterType="map" resultType="Product">
 	SELECT * FROM product WHERE  id LIMIT #{start},#{pageSize}
 </select>
@@ -16,5 +19,38 @@
 <select id="getTotalsByCid" resultType="int">
 	SELECT COUNT(*) FROM product where cid = #{cid}
 </select>
-
+<insert id="add" parameterType="Product">																		     
+	INSERT into product (name,subTitle,orignalPrice,promotePrice,stock,cid,createDate) values (#{name},#{subTitle},#{orignalPrice},#{promotePrice},#{stock},#{cid},SYSDATE())
+</insert>
+<delete id="deleteById">
+	delete from Product where id = #{id}
+</delete>
+<update id="update" parameterType="Product">
+	<!-- update product 
+	<trim prefix="set" suffixOverrides=",">
+		<if test="name!=null and name!=''">
+			name = #{name}
+		</if>
+		<if test="subTitle!=null and subTitle!=''">
+			subTitle = #{subTitle}
+		</if>	  
+		<if test="orignalPrice!=null and orignalPrice!=''">
+			orignalPrice = #{orignalPrice}
+		</if>
+		<if test="promotePrice!=null and promotePrice!=''">
+			promotePrice = #{promotePrice}
+		</if>
+		<if test="stock!=null and stock!=''">
+			stock = #{stock}
+		</if>
+		<if test="cid!=null and cid!=''">
+			cid = #{cid}
+		</if>
+		<if test="createDate!=null and createDate!=''">
+			createDate = SYSDATE()
+		</if>
+	</trim>
+	where id = #{id} -->
+	update product set name = #{name},subTitle = #{subTitle},orignalPrice = #{orignalPrice},promotePrice = #{promotePrice},stock = #{stock} where id = #{id} 
+</update>
 </mapper>

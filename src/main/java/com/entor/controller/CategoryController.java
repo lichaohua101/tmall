@@ -29,7 +29,7 @@ public class CategoryController {
 	@Resource
 	private CategoryService categoryService;
 	
-	//分页admin_listCategory/0/3
+	//分页  			  admin_category_list/0/1		
 	@RequestMapping("/admin_listCategory/{cid}/{currentPage}")
 	public String queryByPage(@PathVariable String cid, @PathVariable String currentPage,Map<String, Object> map) {
 		Page<User> page = new Page<>(currentPage,5,categoryService.getTotals(Category.class));
@@ -43,7 +43,6 @@ public class CategoryController {
 	//删除
 	@RequestMapping("/admin_category_delete/{id}/{sp}")
 	public String admin_category_delete(@PathVariable String id,@PathVariable String sp) {
-		
 		categoryService.deleteById(Category.class, id);
 		return "forward:/admin_listCategory/0/"+sp;
 	}

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.entor.dao.PropertyValueDao;
 import com.entor.entity.PropertyValue;
+import com.entor.vo.PropertyValueVO;
 
 @Repository("PropertyValueDao")
 public class PropertyValueDaoImpl extends BaseDaoImpl<PropertyValue> implements PropertyValueDao{
@@ -40,6 +41,12 @@ public class PropertyValueDaoImpl extends BaseDaoImpl<PropertyValue> implements 
 	public void updateValueById(int id, String value) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public List<PropertyValueVO> queryAllByPid(int pid) {
+		getSqlSession().selectList(PropertyValueVO.class.getSimpleName()+".queryAllByPid",pid);
+		return null;
 	}
 
 }

@@ -48,12 +48,28 @@ public class PropertyController {
 		return "admin_property_list/"+cid+"/1";
 	}
 	
-	@RequestMapping("/admin_property_edit/{pid}")
-	public String admin_property_edit(@PathVariable String id,Map<String, Object> map) {
+	//修改admin_property_edit/60/243/1
+	@RequestMapping("/admin_property_edit/{cid}/{pid}/{sp}")
+	public String admin_property_edit(@PathVariable String cid, @PathVariable String pid,@PathVariable String sp, Map<String, Object> map) {
 		//admin_property_edit/${p.id} queryByPidGetPropertyAndCategory
-		Property property =  propertyService.queryById(Property.class, id);
-		
+		Category category =  categoryService.queryById(Category.class,Integer.parseInt(cid));
+		Property property =  propertyService.queryById(Property.class, Integer.parseInt(pid));
 		map.put("p", property);
-		return null;
+		map.put("c", category);
+		map.put("cid", cid);
+		map.put("sp", sp);
+		return "admin/editProperty";
+	}
+	@RequestMapping("/admin_property_update")
+	public String update(Property property,String cid,String sp) {
+		propertyService.update(property);
+		System.out.println(cid);
+		return "redirect:/admin_property_list/"+cid+"/"+sp;
+	}
+	//admin_property_delete/60/267/4
+	@RequestMapping("/admin_property_delete/{cid}/{id}/{sp}")
+	public String admin_property_delete(@PathVariable String cid ,@PathVariable String id,@PathVariable String sp) {
+		propertyService.deleteById(Property.class, Integer.parseInt(id));
+		return "redirect:/admin_property_list/"+cid+"/"+sp;
 	}
 }

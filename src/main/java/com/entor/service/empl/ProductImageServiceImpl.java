@@ -13,4 +13,11 @@ public class ProductImageServiceImpl extends BaseServiceImpl<ProductImage> imple
 
 	@Resource
 	private ProductImageDao productImageDao;
+
+	@Override
+	public int getScondImage(int cid, int pid) {
+		return productImageDao.getScondImage(cid, pid);
+	}
+	
+	
 }

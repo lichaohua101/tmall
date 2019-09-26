@@ -3,9 +3,11 @@ package com.entor.dao;
 import java.util.List;
 
 import com.entor.entity.PropertyValue;
+import com.entor.vo.PropertyValueVO;
 
 public interface PropertyValueDao extends BaseDao<PropertyValue>{
-
+	
+	public List<PropertyValueVO> queryAllByPid(int pid);
 	/**
 	 * 批量添加商品属性值
 	 * @param s

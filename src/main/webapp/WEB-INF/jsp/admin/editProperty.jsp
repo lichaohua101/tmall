@@ -15,7 +15,7 @@
 <div class="workingArea">
 	<ol class="breadcrumb">
 		<li><a href="${pageContext.request.contextPath }/admin_category_list">所有分类</a></li>
-		<li><a href="${pageContext.request.contextPath }/admin_property_list?cid=${p.category.id}">${p.category.name}</a></li>
+		<li><a href="${pageContext.request.contextPath }/admin_property_list/${c.id}/${sp}">${c.name}</a></li>
 		<li class="active">编辑属性</li>
 	</ol>
 

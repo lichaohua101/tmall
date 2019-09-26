@@ -26,8 +26,8 @@
 <div class="workingArea">
 
 	<ol class="breadcrumb">
-		<li><a href="${pageContext.request.contextPath }/admin_category_list">所有分类</a></li>
-		<li><a href="${pageContext.request.contextPath }/admin_property_list?cid=${c.id}">${c.name}</a></li>
+		<li><a href="${pageContext.request.contextPath }/admin_listCategory/0/1">所有分类</a></li>
+		<li><a href="${pageContext.request.contextPath }/admin_property_list/${c.id}/${page.sp}">${c.name}</a></li>
 		<li class="active">属性管理</li>
 	</ol>
 
@@ -50,10 +50,10 @@
 				<tr>
 					<td>${p.id}</td>
 					<td>${p.name}</td>
-					<td><a href="${pageContext.request.contextPath }/admin_property_edit/${p.id}"><span
+					<td><a href="${pageContext.request.contextPath }/admin_property_edit/${c.id}/${p.id}/${page.sp}"><span
 							class="glyphicon glyphicon-edit"></span></a></td>
 					<td><a deleteLink="true"
-						   href="${pageContext.request.contextPath }/admin_property_delete/${p.id}"><span
+						   href="${pageContext.request.contextPath }/admin_property_delete/${c.id}/${p.id}/${page.sp}"><span
 							class=" 	glyphicon glyphicon-trash"></span></a></td>
 
 				</tr>
