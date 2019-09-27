@@ -3,7 +3,9 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="User">
-
+<select id="checkUser" resultType="User">
+	select * from User where name = #{name} and password = #{password}
+</select>
 <insert id="add" parameterType="User">
 	insert into user(name,password) values(#{name},#{password});
 </insert>
@@ -30,5 +32,8 @@
 </select>
 <select id="getTotals" resultType="int">
 	SELECT COUNT(*) FROM User
+</select>
+<select id="quertAll" resultType="User">
+	select * from User order by id desc
 </select>
 </mapper>

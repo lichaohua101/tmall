@@ -29,6 +29,12 @@ public class CategoryController {
 	@Resource
 	private CategoryService categoryService;
 	
+	//中转
+	@RequestMapping("/admin")
+	public String admin() {
+		return "redirect:admin_listCategory/0/1";
+	}
+	
 	//分页  			  admin_category_list/0/1		
 	@RequestMapping("/admin_listCategory/{cid}/{currentPage}")
 	public String queryByPage(@PathVariable String cid, @PathVariable String currentPage,Map<String, Object> map) {

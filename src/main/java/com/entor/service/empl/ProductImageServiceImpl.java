@@ -18,6 +18,11 @@ public class ProductImageServiceImpl extends BaseServiceImpl<ProductImage> imple
 	public int getScondImage(int cid, int pid) {
 		return productImageDao.getScondImage(cid, pid);
 	}
+
+	@Override
+	public ProductImage queryMaxByPid(int pid) {
+		return productImageDao.queryMaxByPid(pid);
+	}
 	
 	
 }

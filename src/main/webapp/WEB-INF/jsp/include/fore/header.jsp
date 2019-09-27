@@ -2,6 +2,11 @@
 <!-- 本教程仅用于学习使用，切勿用于非法用途，由此引起一切后果与本站无关-->
 <!-- 供购买者学习，请勿私自传播，否则自行承担相关法律责任-->
 
+<!-- 头部（网页没有内容） -->
+<!-- $("p").click(function(){
+    alert("段落被点击了。");
+}); -->
+
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8" isELIgnored="false"%>
@@ -14,10 +19,10 @@
 <html>
 
 <head>
-	<script src="js/jquery/2.0.0/jquery.min.js"></script>
-	<link href="css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
-	<script src="js/bootstrap/3.3.6/bootstrap.min.js"></script>
-	<link href="css/fore/style.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath }/js/jquery/2.0.0/jquery.min.js"></script>
+	<link href="${pageContext.request.contextPath }/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath }/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+	<link href="${pageContext.request.contextPath }/css/fore/style.css" rel="stylesheet">
 	<script>
         function formatMoney(num){
             num = num.toString().replace(/\$|\,/g,'');

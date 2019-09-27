@@ -35,4 +35,7 @@
 <select id="queryById" resultType="Property">
 	SELECT * from property WHERE id= #{id}
 </select>
+<select id="quertAll" resultType="Property">
+	select * from Property order by id desc
+</select>
 </mapper>

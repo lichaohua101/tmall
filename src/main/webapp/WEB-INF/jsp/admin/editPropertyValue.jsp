@@ -13,31 +13,64 @@
 <title>编辑产品属性值</title>
 
 <script>
-    $(function() {
-        $("input.pvValue").keyup(function(){
-            var value = $(this).val();
-            var page = "admin_propertyValue_update";
-            var pvid = $(this).attr("pvid");
-            var parentSpan = $(this).parent("span");
-            parentSpan.css("border","1px solid yellow");
-            $.post(
-                page,
-                {"value":value,"id":pvid},
-                function(result){
-                    if("success"==result)
-                        parentSpan.css("border","1px solid green");
-                    else
-                        parentSpan.css("border","1px solid red");
-                }
-            );
-        });
-    });
+/* function change(obj) {
+	var value = $(this).val();
+	var page = "admin_propertyValue_update";
+	
+} */
+$(function() {
+	$("input.pvValue").keyup(function(){
+		var value = $(this).val();
+		var page = "admin_propertyValue_update";
+		var pvid = $(this).attr("pvid");
+		var parentSpan = $(this).parent("span");
+		parentSpan.css("border","1px solid yellow");
+		
+		function change() {
+			$.ajax({
+				type:"post",
+				url:page,
+				data:{"value":value,"pvid":pvid},
+				dataType:"json",
+				success:function(data){
+					alert(data);
+					parentSpan.css("border","1px solid green");
+				 },
+				error:function(){
+					alert("失败")
+				}
+			});
+		}
+		
+	});
+});
+/* $(function() {
+	$("input.pvValue").keyup(function(){
+		var value = $(this).val();
+		var page = "admin_propertyValue_update";
+		var pvid = $(this).attr("pvid");
+		var parentSpan = $(this).parent("span");
+		parentSpan.css("border","1px solid yellow");
+		$.ajax({
+			type:"post",
+			url:page,
+			data:{"value":value,"pvid":pvid},
+			dataType:"json",
+			 function(result){
+		    	if("success"==result){
+		    		parentSpan.css("border","1px solid green");
+		    	}else{
+		    		parentSpan.css("border","1px solid red");
+		    	}
+		    }
+		});
+	});
+});  */
 </script>
-
 <div class="workingArea">
 	<ol class="breadcrumb">
-		<li><a href="admin_category_list">所有分类</a></li>
-		<li><a href="admin_product_list?cid=${p.category.id}">${p.category.name}</a></li>
+		<li><a href="${pageContext.request.contextPath }/admin_category_list/0/1">所有分类</a></li>
+		<li><a href="${pageContext.request.contextPath }/admin_product_list/${c.id}/1">${c.name}</a></li>
 		<li class="active">${p.name}</li>
 		<li class="active">编辑产品属性</li>
 	</ol>
@@ -45,8 +78,8 @@
 	<div class="editPVDiv">
 		<c:forEach items="${pvs}" var="pv">
 			<div class="eachPV">
-				<span class="pvName" >${pv.property.name}</span>
-				<span class="pvValue"><input class="pvValue" pvid="${pv.id}" type="text" value="${pv.value}"></span>
+				<span class="pvName" >${pv.name}</span>
+				<span class="pvValue"><input class="pvValue" pvid="${pv.id}" type="text" value="${pv.value}" onchange="change()"></span>
 			</div>
 		</c:forEach>
 		<div style="clear:both"></div>

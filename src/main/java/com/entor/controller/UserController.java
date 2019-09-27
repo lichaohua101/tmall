@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,5 +30,14 @@ public class UserController {
 		map.put("list", "admin_user_list");
 		map.put("Cateid", ccid);
 		return "admin/listUser";
+	}
+	
+	@RequestMapping("/foreregister")
+	public String addUser(User user, Map<String, Object>map,HttpSession session) {
+		userService.add(user);
+		map.put("user", user);
+		session.setAttribute("user", user);
+		//<meta http-equiv="refresh" content="等待秒数;url=页面路径"/>
+		return "fore/registerSuccess";
 	}
 }

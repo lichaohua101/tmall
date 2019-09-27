@@ -63,4 +63,10 @@ public class ProductImageDaoImpl extends BaseDaoImpl<ProductImage> implements Pr
 		return getSqlSession().selectOne(ProductImage.class.getSimpleName()+".getScondImage",map);
 	}
 
+
+	@Override
+	public ProductImage queryMaxByPid(int pid) {
+		return getSqlSession().selectOne(namespace+".queryMaxByPid",pid);
+	}
+
 }

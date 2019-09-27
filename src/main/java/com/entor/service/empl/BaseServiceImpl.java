@@ -50,4 +50,9 @@ public class BaseServiceImpl<T> implements BaseService<T>{
 		return baseDao.getTotals(cls);
 	}
 
+	@Override
+	public List<T> quertAll(Class<?> cls) {
+		return baseDao.quertAll(cls);
+	}
+
 }

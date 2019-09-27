@@ -1,12 +1,23 @@
 package com.entor.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.entor.entity.PropertyValue;
-import com.entor.vo.PropertyValueVO;
+import com.entor.entity.PropertyValueVO;
 
 public interface PropertyValueDao extends BaseDao<PropertyValue>{
 	
+	/**
+	 * 修改商品属性
+	 * @param map
+	 */
+	public void updateValueById(Map<String,String> map);
+	/**
+	 * 查找商品属性
+	 * @param pid
+	 * @return
+	 */
 	public List<PropertyValueVO> queryAllByPid(int pid);
 	/**
 	 * 批量添加商品属性值

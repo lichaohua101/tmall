@@ -2,10 +2,17 @@ package com.entor.dao;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import com.entor.entity.User;
 
 public interface UserDao extends BaseDao<User>{
-
+	
+	/**
+	 * 校验是否有此用户
+	 * @return
+	 */
+	public User checkUser(User user);
 	/**
 	 * 用户登录
 	 * @param username	登录账号

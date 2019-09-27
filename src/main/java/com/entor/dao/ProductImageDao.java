@@ -42,4 +42,10 @@ public interface ProductImageDao extends BaseDao<ProductImage>{
 	 * @return
 	 */
 	public int getTotalsByPid(int pid);
+	/**
+	 * 通过pid查找最大的
+	 * @param pid
+	 * @return
+	 */
+	public ProductImage queryMaxByPid(int pid);
 }

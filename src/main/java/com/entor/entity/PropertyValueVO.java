@@ -1,16 +1,16 @@
-package com.entor.vo;
+package com.entor.entity;
 
 public class PropertyValueVO {
 	private int id;
-	private String pname;
+	private String name;
 	private String value;
 	public PropertyValueVO() {
 		super();
 	}
-	public PropertyValueVO(int id, String pname, String value) {
+	public PropertyValueVO(int id, String name, String value) {
 		super();
 		this.id = id;
-		this.pname = pname;
+		this.name = name;
 		this.value = value;
 	}
 	public int getId() {
@@ -19,11 +19,11 @@ public class PropertyValueVO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getPname() {
-		return pname;
+	public String getName() {
+		return name;
 	}
-	public void setPname(String pname) {
-		this.pname = pname;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getValue() {
 		return value;
@@ -33,7 +33,7 @@ public class PropertyValueVO {
 	}
 	@Override
 	public String toString() {
-		return "PropertyValueVO [id=" + id + ", pname=" + pname + ", value=" + value + "]";
+		return "PropertyValueVO [id=" + id + ", name=" + name + ", value=" + value + "]";
 	}
 	
 }

@@ -5,4 +5,8 @@
 <select id="queryByPage" parameterType="map" resultType="Review">
 	SELECT * from Review where id LIMIT #{start},#{pageSize}
 </select>
+<select id="quertAll" resultType="Review">
+	select * from Review order by id desc
+</select>
+
 </mapper>

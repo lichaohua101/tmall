@@ -5,4 +5,7 @@
 <select id="queryByPage" parameterType="map" resultType="OrderItem">
 	SELECT * from orderItem where id LIMIT #{start},#{pageSize}
 </select>
+<select id="quertAll" resultType="OrderItem">
+	select * from OrderItem order by id desc
+</select>
 </mapper>

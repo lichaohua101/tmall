@@ -70,7 +70,7 @@
 					<td>${p.orignalPrice}</td>
 					<td>${p.promotePrice}</td>
 					<td>${p.stock}</td>
-					<td><a href="${pageContext.request.contextPath }/admin_productImage_list/${p.id}"><span
+					<td><a href="${pageContext.request.contextPath }/admin_productImage_list/${c.id }/${page.sp }/${p.id}"><span
 							class="glyphicon glyphicon-picture"></span></a></td>
 					<td><a href="${pageContext.request.contextPath }/admin_propertyValue_edit/${c.id }/${page.sp }/${p.id}"><span
 							class="glyphicon glyphicon-th-list"></span></a></td>

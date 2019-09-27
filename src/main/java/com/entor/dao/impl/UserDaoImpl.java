@@ -2,6 +2,9 @@ package com.entor.dao.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.stereotype.Repository;
 
 import com.entor.dao.UserDao;
@@ -9,6 +12,14 @@ import com.entor.entity.User;
 
 @Repository("userDao")
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
+	
+	
+	@Resource
+	@Override
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		// TODO Auto-generated method stub
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
 
 	private final String namespace = "User";	
 	
@@ -40,6 +51,11 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao{
 	public boolean checkUsername(String username) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public User checkUser(User user) {
+		return getSqlSession().selectOne(namespace+".checkUser",user);
 	}
 
 }

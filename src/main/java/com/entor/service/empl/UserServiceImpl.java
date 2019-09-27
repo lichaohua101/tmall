@@ -18,6 +18,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 	public void test() {
 	System.out.println("测试成功");
 	}
+
+	@Override
+	public User checkUser(User user) {
+		return userDao.checkUser(user);
+	}
 	
 	
 }

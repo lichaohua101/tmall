@@ -42,4 +42,10 @@ public interface BaseService<T> {
 	 * @return
 	 */
 	public int getTotals(Class<?> cls);
+	/**
+	 * 全部记录数
+	 * @param cls
+	 * @return
+	 */
+	public List<T> quertAll(Class<?> cls);
 }

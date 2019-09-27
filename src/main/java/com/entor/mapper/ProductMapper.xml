@@ -25,6 +25,9 @@
 <delete id="deleteById">
 	delete from Product where id = #{id}
 </delete>
+<select id="quertAll" resultType="Product">
+	select * from Product order by id desc
+</select>
 <update id="update" parameterType="Product">
 	<!-- update product 
 	<trim prefix="set" suffixOverrides=",">

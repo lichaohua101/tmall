@@ -42,4 +42,9 @@ public interface BaseDao<T> {
 	 * @return
 	 */
 	public int getTotals(Class<?> cls);
+	/** 
+	 * 查询全部记录数
+	 * @return
+	 */
+	public List<T> quertAll(Class<?> cls);
 }
