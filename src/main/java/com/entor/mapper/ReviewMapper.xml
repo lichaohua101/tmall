@@ -8,5 +8,10 @@
 <select id="quertAll" resultType="Review">
 	select * from Review order by id desc
 </select>
-
+<select id="getTotalsByPid" resultType="int">
+	SELECT COUNT(id) FROM review where pid = #{pid}
+</select>
+<select id="getReviewsByPid" resultType="Review">
+	 select r.*,u.`name` FROM review r,`user` u where r.uid=u.id AND r.pid=#{pid}
+</select>
 </mapper>

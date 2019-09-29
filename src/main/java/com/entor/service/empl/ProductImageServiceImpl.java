@@ -1,5 +1,7 @@
 package com.entor.service.empl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,21 @@ public class ProductImageServiceImpl extends BaseServiceImpl<ProductImage> imple
 	@Override
 	public ProductImage queryMaxByPid(int pid) {
 		return productImageDao.queryMaxByPid(pid);
+	}
+
+	@Override
+	public List<ProductImage> fiveImages(int pid) {
+		return productImageDao.fiveImages(pid);
+	}
+
+	@Override
+	public List<ProductImage> queryAllByDetails(int id) {
+		return productImageDao.queryAllByDetails(id);
+	}
+
+	@Override
+	public ProductImage queryAllByPids(int pid) {
+		return productImageDao.queryAllByPids(pid);
 	}
 	
 	

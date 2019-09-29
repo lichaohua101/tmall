@@ -7,6 +7,25 @@ import com.entor.entity.ProductImage;
 public interface ProductImageDao extends BaseDao<ProductImage>{
 	
 	/**
+	 * max图片
+	 * @param pid
+	 * @return
+	 */
+	public ProductImage queryAllByPids(int pid);
+	/**
+	 * 服务图片
+	 * @param id
+	 * @return
+	 */
+	public List<ProductImage> queryAllByDetails(int id);
+
+	/**
+	 * 五张小图片
+	 * @param pid
+	 * @return
+	 */
+	public List<ProductImage> fiveImages(int pid);
+	/**
 	 * 获取 产品管理的图片
 	 * @param cid		类别Id
 	 * @param piId		产品Id

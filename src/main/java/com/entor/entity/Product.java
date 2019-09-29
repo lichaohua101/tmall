@@ -1,6 +1,7 @@
 package com.entor.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Product {
 	/**
@@ -35,11 +36,32 @@ public class Product {
 	 * 产品上架时间
 	 */
 	private Date createDate;
+	/**
+	 * 图片
+	 */					 
+	private ProductImage firstProductImage;
+	/**
+	 * 五张小图片
+	 */
+	private List<ProductImage> productSingleImages;
+	/**
+	 * 商品的属性
+	 */
+	private List<PropertyValueVO> property;
+	/**
+	 * 总评论
+	 */
+	private int reviewCount;
+	/**
+	 * 总销量
+	 */
+	private int saleCount;
 	public Product() {
 		super();
 	}
 	public Product(int id, String name, String subTitle, float orignalPrice, float promotePrice, int stock, int cid,
-			Date createDate) {
+			Date createDate, ProductImage firstProductImage, List<ProductImage> productSingleImages,
+			List<PropertyValueVO> property, int reviewCount, int saleCount) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -49,6 +71,11 @@ public class Product {
 		this.stock = stock;
 		this.cid = cid;
 		this.createDate = createDate;
+		this.firstProductImage = firstProductImage;
+		this.productSingleImages = productSingleImages;
+		this.property = property;
+		this.reviewCount = reviewCount;
+		this.saleCount = saleCount;
 	}
 	public int getId() {
 		return id;
@@ -98,11 +125,44 @@ public class Product {
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
+	public ProductImage getFirstProductImage() {
+		return firstProductImage;
+	}
+	public void setFirstProductImage(ProductImage firstProductImage) {
+		this.firstProductImage = firstProductImage;
+	}
+	public List<ProductImage> getProductSingleImages() {
+		return productSingleImages;
+	}
+	public void setProductSingleImages(List<ProductImage> productSingleImages) {
+		this.productSingleImages = productSingleImages;
+	}
+	public List<PropertyValueVO> getProperty() {
+		return property;
+	}
+	public void setProperty(List<PropertyValueVO> property) {
+		this.property = property;
+	}
+	public int getReviewCount() {
+		return reviewCount;
+	}
+	public void setReviewCount(int reviewCount) {
+		this.reviewCount = reviewCount;
+	}
+	public int getSaleCount() {
+		return saleCount;
+	}
+	public void setSaleCount(int saleCount) {
+		this.saleCount = saleCount;
+	}
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", name=" + name + ", subTitle=" + subTitle + ", orignalPrice=" + orignalPrice
 				+ ", promotePrice=" + promotePrice + ", stock=" + stock + ", cid=" + cid + ", createDate=" + createDate
-				+ "]";
+				+ ", firstProductImage=" + firstProductImage + ", productSingleImages=" + productSingleImages
+				+ ", property=" + property + ", reviewCount=" + reviewCount + ", saleCount=" + saleCount + "]";
 	}
+	
+	
 	
 }

@@ -21,7 +21,7 @@
 
 <div class="homepageCategoryProducts">
 	<c:forEach items="${cs}" var="c" varStatus="stc">
-		<c:if test="${stc.count<=categorycount}">
+		<c:if test="${stc.count<=5}">
 			<div class="eachHomepageCategoryProducts">
 				<div class="left-mark"></div>
 				<span class="categoryTitle">${c.name}</span>
@@ -29,8 +29,9 @@
 				<c:forEach items="${c.products}" var="p" varStatus="st">
 					<c:if test="${st.count<=5}">
 						<div class="productItem" >
-							<a href="foreproduct?pid=${p.id}"><img width="100px" src="img/productSingle_middle/${p.firstProductImage.id}.jpg"></a>
-							<a class="productItemDescLink" href="foreproduct?pid=${p.id}">
+							<a href="${pageContext.request.contextPath }/foreproduct/${p.id}"><img width="100px" src="${pageContext.request.contextPath }/img/productSingle_middle/${p.firstProductImage.id }.jpg"></a>
+							<%-- <span>${p.FirstProductImage.id }</span> --%>
+							<a class="productItemDescLink" href="${pageContext.request.contextPath }/foreproduct/${p.id}">
 								<span class="productItemDesc">[热销]
 								${fn:substring(p.name, 0, 20)}
 								</span>
@@ -47,6 +48,6 @@
 	</c:forEach>
 	
 	
-	<img id="endpng" class="endpng" src="img/site/end.png">
+	<img id="endpng" class="endpng" src="${pageContext.request.contextPath }/img/site/end.png">
 
 </div>

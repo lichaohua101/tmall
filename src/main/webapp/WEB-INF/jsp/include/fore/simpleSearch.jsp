@@ -7,7 +7,7 @@
 
 <div >
 	<a href="${contextPath}">
-		<img id="simpleLogo" class="simpleLogo" src="img/site/simpleLogo.png">
+		<img id="simpleLogo" class="simpleLogo" src="${pageContext.request.contextPath }/img/site/simpleLogo.png">
 	</a>
 
 	<form action="foresearch" method="post" >
@@ -18,7 +18,7 @@
 				<c:forEach items="${cs}" var="c" varStatus="st">
 					<c:if test="${st.count>=8 and st.count<=11}">
 					<span>
-						<a href="forecategory?cid=${c.id}">
+						<a href="${pageContext.request.contextPath }/forecategory/${c.id}">
 								${c.name}
 						</a>
 						<c:if test="${st.count!=11}">

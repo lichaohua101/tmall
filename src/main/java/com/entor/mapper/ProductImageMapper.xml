@@ -15,9 +15,19 @@ select MAX(pimage) pi FROM (select pi.id pimage from product p ,productimage pi 
 <select id="queryMaxByPid" resultType="ProductImage">
 	select * FROM productimage where id =(SELECT MAX(id) FROM productimage where pid = #{pid} AND type='type_single' )
 </select>
+<select id="fiveImages" resultType="ProductImage">
+	SELECT * FROM productimage where pid=#{id} AND type='type_single'
+</select>
+<select id="queryAllByDetails" resultType="ProductImage">
+	SELECT * from productimage WHERE pid=#{id} and type='type_detail'
+</select>
+<select id="queryAllByPids" resultType="ProductImage">
+	select * from productimage where id = (SELECT MAX(id) FROM productimage WHERE pid = #{pid} AND type='type_single')
+</select>
 	<!-- 查找操作 -->
 <!-- <select id="queryAllPic" parameterType="map" resultType="int">
 	select max(pi.id) from product p ,productimage pi where p.id=pi.pid and
 	p.cid=#{cid} and p.id=#{id} and pi.type='type_single'
 </select> -->
+
 </mapper>

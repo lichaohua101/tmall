@@ -19,13 +19,15 @@ $(function(){
 
 </script>
 <c:forEach items="${cs}" var="c">
+
 	<div cid="${c.id}" class="productsAsideCategorys">
-	 
-		<c:forEach items="${c.productsByRow}" var="ps">
+		<c:forEach items="${c.products}" var="ps">
 			<div class="row show1">
-				<c:forEach items="${ps}" var="p">
+				<c:forEach items="${c.products}" var="p">
 					<c:if test="${!empty p.subTitle}">
-						<a href="foreproduct?pid=${p.id}">
+					<!-- 每一个商品 -->
+						<a href="${pageContext.request.contextPath }/foreproduct/${p.id}">
+						<!-- 截取每一个小标题 -->
 							<c:forEach items="${fn:split(p.subTitle, ' ')}" var="title" varStatus="st">
 								<c:if test="${st.index==0}">
 									${title}

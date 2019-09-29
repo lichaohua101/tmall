@@ -8,4 +8,9 @@
 <select id="quertAll" resultType="OrderItem">
 	select * from OrderItem order by id desc
 </select>
+<select id="getSaleByPid" resultType="String">
+	SELECT SUM(oid)*SUM(number) su FROM ( SELECT oi.* FROM orderitem oi ,order_ o where o.uid=oi.uid AND o.`status`='finish' and oi.pid= #{pid})s
+</select>
+<select id="queryAllByUid" resultType="OrderItem">
+	SELECT * from orderitem oi,(select * from order_ o WHERE o.uid = #{uid} and o.payDate is NULL) o,product p where oi.oid = o.id and p.id = oi.pid</select>
 </mapper>

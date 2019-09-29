@@ -24,6 +24,6 @@
 		SELECT COUNT(*) FROM category
 	</select>
 	<select id="quertAll" resultType="Category">
-		select * from Category order by id desc
+		select * from Category 
 	</select>
 </mapper>
